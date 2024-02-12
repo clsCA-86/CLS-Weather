@@ -6,6 +6,21 @@ body {
     min-height: 100vh;
     background-color: #f0f0f0;
     background-image: linear-gradient(to bottom, #225588, #88bbee); /* Blue ombre gradient */
+    background-size: 400% 400%; /* Make the gradient larger than the screen */
+    animation: gradientAnimation 10s ease infinite; 
+}
+
+@keyframes gradientAnimation {
+    0% { 
+        background-position: 0% 50%;
+    }
+    50% { 
+        background-position: 100% 50%; 
+    }
+    100% { 
+        background-position: 0% 50%; 
+    }
+}
 }
 
 .container {
