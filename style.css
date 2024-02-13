@@ -4,7 +4,6 @@ body {
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background-color: #f0f0f0;
     background-image: linear-gradient(to bottom, #225588, #88bbee); /* Blue ombre gradient */
     background-size: 400% 400%; /* Make the gradient larger than the screen */
     animation: gradientAnimation 10s ease infinite; 
