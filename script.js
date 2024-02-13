@@ -1,12 +1,10 @@
 const locationInput = document.getElementById('locationInput');
 const searchButton = document.getElementById('searchButton');
 const weatherInfo = document.getElementById('weatherInfo');
-const forecastSection = document.getElementById('forecast'); // Assuming you added this in HTML
+const forecastSection = document.getElementById('forecast'); 
 const toggleUnit = document.getElementById('toggleUnit');
 
-// Replace 'YOUR_API_KEY' with your actual WeatherAPI key
-const apiKey = '7367c6e31dc6407795b213336241202'; 
-
+const apiKey = '7367c6e31dc6407795b213336241202'; // Replace with your WeatherAPI key
 let displayFahrenheit = false;
 
 searchButton.addEventListener('click', () => {
@@ -20,7 +18,7 @@ toggleUnit.addEventListener('click', () => {
 });
 
 function fetchWeatherData(location) {
-    const url = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${location}&days=3`; // Include forecast
+    const url = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${location}&days=3`;
 
     fetch(url)
         .then(response => response.json())
@@ -28,32 +26,34 @@ function fetchWeatherData(location) {
             displayWeather(data);
             displayForecast(data.forecast.forecastday);
         })
-        .catch(error => displayError(error)); 
+        .catch(error => displayError(error));
 }
 
 function displayWeather(data) {
-    // ... (Most of the displayWeather code remains identical) ...
+    const { location, current } = data; // Destructuring
 
-    // More detailed weather
-    weatherInfo.innerHTML += `
-        <p><strong>Humidity:</strong> ${data.current.humidity}%</p>
-        <p><strong>Wind:</strong> ${data.current.wind_mph} mph ${data.current.wind_dir}</p>
-        <p><strong>Feels Like:</strong> ${displayFahrenheit ? data.current.feelslike_f : data.current.feelslike_c} &deg;${displayFahrenheit ? 'F' : 'C'}</p> 
+    weatherInfo.innerHTML = `
+        <h2>${location.name}, ${location.region}</h2>
+        <img src="${current.condition.icon}">
+        <p><strong>${current.condition.text}</strong></p>
+        <p><strong>Temperature:</strong> ${displayFahrenheit ? current.temp_f : current.temp_c} &deg;${displayFahrenheit ? 'F' : 'C'}</p> 
+        <p><strong>Humidity:</strong> ${current.humidity}%</p>
+        <p><strong>Wind:</strong> ${current.wind_mph} mph ${current.wind_dir}</p>
+        <p><strong>Feels Like:</strong> ${displayFahrenheit ? current.feelslike_f : current.feelslike_c} &deg;${displayFahrenheit ? 'F' : 'C'}</p> 
     `;
 
-    // Background change (example) - Same as before
-    // ... 
+    // ... (Background change code - no changes needed) ...
 }
 
 function displayForecast(forecastData) {
-    forecastSection.innerHTML = ''; // Clear previous forecast
+    forecastSection.innerHTML = ''; 
 
     forecastData.forEach(day => {
         let temp = displayFahrenheit ? day.day.avgtemp_f : day.day.avgtemp_c;
         let unit = displayFahrenheit ? 'F' : 'C';
-        
+
         const forecastItem = document.createElement('div');
-        forecastItem.classList.add('forecast-item'); 
+        forecastItem.classList.add('forecast-item');
         forecastItem.innerHTML = `
             <h3>${new Date(day.date).toDateString()}</h3>
             <img src="${day.day.condition.icon}">
@@ -61,4 +61,9 @@ function displayForecast(forecastData) {
         `;
         forecastSection.appendChild(forecastItem);
     })
+}
+
+function displayError(error) {
+    weatherInfo.innerHTML = `<p>Error: ${error.message}</p>`;
+    forecastSection.innerHTML = '';
 }
