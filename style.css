@@ -8,7 +8,6 @@ body {
   background-repeat: no-repeat;       /* Prevent image from repeating */
   background-attachment: fixed;       /* Ensure background stays in place with scrolling */
   margin: 0; 
-  overflow: hidden; /* Prevent scrollbars */
   animation: pan 30s linear infinite;
 }
 @keyframes pan {
