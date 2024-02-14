@@ -5,7 +5,12 @@ const forecastSection = document.getElementById('forecast');
 const toggleUnit = document.getElementById('toggleUnit');
 
 const apiKey = '7367c6e31dc6407795b213336241202'; // Replace with your WeatherAPI key
-let displayFahrenheit = false;
+let displayFahrenheit = true;
+let currentTemp = data.current.temp_c;
+setInterval(() => {
+  currentTemp += (Math.random() - 0.5); 
+  document.querySelector('.temp').innerText = currentTemp;
+}, 3000);
 
 searchButton.addEventListener('click', () => {
     const location = locationInput.value;
@@ -44,6 +49,7 @@ function displayWeather(data) {
 
     // ... (Background change code - no changes needed) ...
 }
+
 
 function displayForecast(forecastData) {
     forecastSection.innerHTML = ''; 
