@@ -10,6 +10,32 @@ body {
   margin: 0; 
   animation: pan 30s linear infinite;
 }
+/* Animations */
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+
+}
+
+img {
+  animation: rotate 5s linear infinite;
+}
+
+.forecast-item {
+  animation: fadeIn 0.5s ease-in forwards;
+}
+
 @keyframes pan {
   0% {
     background-position: 0% 0%;
