@@ -32,13 +32,15 @@ function displayWeather(data) {
     const { location, current } = data; // Destructuring
 
     weatherInfo.innerHTML = `
-        <h2>${location.name}, ${location.region}</h2>
+        <h2><strong style="color: red;">${location.name}, ${location.region}</strong></h2>
         <img src="${current.condition.icon}">
-        <p><strong>${current.condition.text}</strong></p>
-        <p><strong>Temperature:</strong> ${displayFahrenheit ? current.temp_f : current.temp_c} &deg;${displayFahrenheit ? 'F' : 'C'}</p> 
-        <p><strong>Humidity:</strong> ${current.humidity}%</p>
-        <p><strong>Wind:</strong> ${current.wind_mph} mph ${current.wind_dir}</p>
-        <p><strong>Feels Like:</strong> ${displayFahrenheit ? current.feelslike_f : current.feelslike_c} &deg;${displayFahrenheit ? 'F' : 'C'}</p> 
+        <p><strong style="color: red;"> ${current.condition.text}</strong></p>
+        <p><strong style="color: red; font-weight: bold;"><b>Temperature:</b> ${displayFahrenheit ? current.temp_f : current.temp_c} &deg;${displayFahrenheit ? 'F' : 'C'}</strong></p>
+        <p><strong style="color: red; font-weight: bold;"><b>Humidity:</b> ${current.humidity}%</strong></p>
+        <p><strong style="color: red; font-weight: bold;"><b>Wind:</b> ${current.wind_mph} mph ${current.wind_dir}</strong></p>
+        <p><strong style="color: red; font-weight: bold;"><b>Feels Like:</b> ${displayFahrenheit ? current.feelslike_f : current.feelslike_c} &deg;${displayFahrenheit ? 'F' : 'C'}</strong></p>
+
+
     `;
 
     // ... (Background change code - no changes needed) ...

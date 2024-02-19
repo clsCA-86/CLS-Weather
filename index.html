@@ -1,23 +1,44 @@
+<!-- index.html -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>CLS-Weather</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>CLS-Weather</title>
 </head>
+
 <body>
-    <div class="container">
-        <h1 style="color: white; margin-left: 2rem;">CLS-Weather</h1>
 
+  <div class="container">
 
-        <input type="text" id="locationInput" placeholder="Enter City">
-        <button id="searchButton"><b style="color: black;">Search</b></button>
-        <button id="toggleUnit"><b style="color: black;">Toggle F/C</b></button>
+    <div class="header">
+      <h1><b style="color: red;">CLS-Weather</b></h1>
 
-        <div id="weatherInfo"></div>
-        <div id="forecast"></div>  </div>
+    </div>
 
-    <script src="script.js"></script>
+    <input type="text" id="locationInput" placeholder="Enter City">
+
+    <button id="searchButton"><b style="color: rgb(250, 5, 5);">Search</b></button>
+
+    <button id="toggleUnit"><b style="color: rgb(250, 5, 5);">Toggle F/C</b></button>
+
+    <div id="weatherInfo"></div>
+
+    <div id="forecast"></div>
+
+    <footer>
+      <p id="footerText"><b>
+          <font color="red">CLS-Weather by Christopher Smith</font>
+        </b></p>
+
+    </footer>
+
+  </div>
+
+  <script src="script.js"></script>
+
 </body>
+
 </html>
